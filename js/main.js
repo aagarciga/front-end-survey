@@ -53,6 +53,7 @@ window.main = function(global, $, moment, serendipia){
     var htmlBindings = {};
     var controls = {};
     var functions = {};
+    var model  = undefined;
 
     htmlBindings.idNameControl = "controlName";
     htmlBindings.idPrefferedTechnologyControlAngular = "controlPrefferedTechnology_angular";
@@ -150,6 +151,53 @@ window.main = function(global, $, moment, serendipia){
         serendipia.debug.log("main.start() at {0}".format(moment().format()), "white", "red");
 
         functions.controlSetup();
+        model = new SurveyModel(function(control, value){
+            var data = {};
+            var modelProperties = model.get();
+            switch (control) {
+                case controls.nameControl:
+                    data.name = value;
+                    break;
+                case controls.prefferedTechnologyControlAngular:
+                    data.prefferedTechnology = value;
+                    break;
+                case controls.prefferedTechnologyControlReact:
+                    data.prefferedTechnology = value;
+                    break;
+                case controls.prefferedTechnologyControlVue:
+                    data.prefferedTechnology = value;
+                    break;
+                case controls.prefferedTechnologyControlNone:
+                    data.prefferedTechnologyControlNone = value;
+                    break;
+                case controls.familiarTechnologiesWebpack:
+                    var collection = modelProperties.familiarTechnologies;
+                    if(!collection) {
+                        collection = new Array();
+                    }
+
+                    collection.push(value);
+                    data.familiarTechnologies = collection;
+                    break;
+                case controls.familiarTechnologiesBabel:
+                    var collection = modelProperties.familiarTechnologies;
+                    // todo: the same
+                    
+                    break;
+            }
+            
+            model.set(data, control);
+            console.log(control, value, model);
+        });
+
+        controls.nameControl.addObserver(model);
+        controls.prefferedTechnologyControlAngular.addObserver(model);
+        controls.prefferedTechnologyControlReact.addObserver(model);
+        controls.prefferedTechnologyControlVue.addObserver(model);
+        controls.prefferedTechnologyControlNone.addObserver(model);
+        controls.familiarTechnologiesWebpack.addObserver(model);
+        controls.familiarTechnologiesBabel.addObserver(model);
+        console.log(model);
     };
 
     return {
