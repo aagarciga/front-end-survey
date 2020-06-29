@@ -152,6 +152,7 @@ window.main = function(global, $, moment, serendipia){
 
         functions.controlSetup();
         model = new SurveyModel(function(control, value){
+            
             var data = {};
             var modelProperties = model.get();
             switch (control) {
@@ -159,30 +160,23 @@ window.main = function(global, $, moment, serendipia){
                     data.name = value;
                     break;
                 case controls.prefferedTechnologyControlAngular:
-                    data.prefferedTechnology = value;
-                    break;
                 case controls.prefferedTechnologyControlReact:
-                    data.prefferedTechnology = value;
-                    break;
                 case controls.prefferedTechnologyControlVue:
-                    data.prefferedTechnology = value;
-                    break;
                 case controls.prefferedTechnologyControlNone:
-                    data.prefferedTechnologyControlNone = value;
-                    break;
+                    data.prefferedTechnology = value;
+                    break;                
                 case controls.familiarTechnologiesWebpack:
+                case controls.familiarTechnologiesBabel:                   
                     var collection = modelProperties.familiarTechnologies;
                     if(!collection) {
                         collection = new Array();
                     }
-
-                    collection.push(value);
+                    if(control.element.checked){
+                        collection.push(value);
+                    } else {
+                        collection.pop(value);
+                    }                    
                     data.familiarTechnologies = collection;
-                    break;
-                case controls.familiarTechnologiesBabel:
-                    var collection = modelProperties.familiarTechnologies;
-                    // todo: the same
-                    
                     break;
             }
             
@@ -197,6 +191,7 @@ window.main = function(global, $, moment, serendipia){
         controls.prefferedTechnologyControlNone.addObserver(model);
         controls.familiarTechnologiesWebpack.addObserver(model);
         controls.familiarTechnologiesBabel.addObserver(model);
+
         console.log(model);
     };
 
