@@ -25,8 +25,71 @@
 
 <body>
 
+  <section id="survey">
+    <header>
+      <h2>Front-end Development Survey</h2>
+    </header>
+    <form action="?" method="POST">
+
+      <div class="form-group">
+        <label for="controlName">Name</label><br/>
+        <input id="controlName" name="Name" type="text" placeholder="John Doe">
+        <span class="control-error"></span>
+      </div>
+      
+      <h3>What do you preffer to work with?</h3>
+
+      <ul>
+        <li>
+          <div class="form-group">
+            <input id="controlPrefferedTechnology_angular" name="prefferedTechnology" type="radio" value="angular"/>
+            <label for="controlPrefferedTechnology_angular">Angular</label>
+          </div>
+        </li>
+        <li>
+          <div class="form-group">
+            <input id="controlPrefferedTechnology_react" name="prefferedTechnology" type="radio" value="react"/>
+            <label for="controlPrefferedTechnology_react">React</label>
+          </div>
+        </li>
+        <li>
+          <div class="form-group">
+            <input id="controlPrefferedTechnology_vue" name="prefferedTechnology" type="radio" value="vue"/>
+            <label for="controlPrefferedTechnology_vue">Vue.js</label>
+          </div>
+        </li>
+        <li>
+          <div class="form-group">
+            <input id="controlPrefferedTechnology_none" name="prefferedTechnology" type="radio" value="none"/>
+            <label for="controlPrefferedTechnology_none">None</label>
+          </div>
+        </li>
+      </ul>
+
+      <h3>What of these technologies are familiar for you?</h3>
+
+      <ul>
+        <li>
+          <div class="form-group">
+            <input id="familiarTechnologies_webpack" name="familiarTechnologies" value="webpack" type="checkbox"/>
+            <label for="familiarTechnologies_webpack">Webpack</label>
+          </div>
+        </li>
+        <li>
+          <div class="form-group">
+            <input id="familiarTechnologies_babel" name="familiarTechnologies" value="babel" type="checkbox"/>
+            <label for="familiarTechnologies_babel">Babel.js</label>
+          </div>
+        </li>
+      </ul>
+
+      <input type="submit" value="Done"/>
+      <input type="reset" value="Clear">
+      
+    </form>
+  </div>
+
   <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="node_modules/jquery/dist/jquery.js"></script>
   <script src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
