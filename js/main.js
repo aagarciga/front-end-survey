@@ -55,8 +55,20 @@ window.main = function(global, $, moment, serendipia){
     var functions = {};
 
     htmlBindings.idNameControl = "controlName";
+    htmlBindings.idPrefferedTechnologyControlAngular = "controlPrefferedTechnology_angular";
+    htmlBindings.idPrefferedTechnologyControlReact = "controlPrefferedTechnology_react";
+    htmlBindings.idPrefferedTechnologyControlVue = "controlPrefferedTechnology_vue";
+    htmlBindings.idPrefferedTechnologyControlNone = "controlPrefferedTechnology_none";
+    htmlBindings.idFamiliarTechnologiesWebpack = "familiarTechnologies_webpack";
+    htmlBindings.idFamiliarTechnologiesBabel = "familiarTechnologies_babel"
 
     controls.nameControl = undefined;
+    controls.prefferedTechnologyControlAngular = undefined;
+    controls.prefferedTechnologyControlReact = undefined;
+    controls.prefferedTechnologyControlVue = undefined;
+    controls.prefferedTechnologyControlNone = undefined;
+    controls.familiarTechnologiesWebpack = undefined;
+    controls.familiarTechnologiesBabel = undefined;
 
     /**
      * @method
@@ -73,8 +85,62 @@ window.main = function(global, $, moment, serendipia){
                 }
             }
         );
+
+        controls.prefferedTechnologyControlAngular = new serendipia.controls.Control(
+            htmlBindings.idPrefferedTechnologyControlAngular,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
+
+        controls.prefferedTechnologyControlReact = new serendipia.controls.Control(
+            htmlBindings.idPrefferedTechnologyControlReact,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
+
+        controls.prefferedTechnologyControlVue = new serendipia.controls.Control(
+            htmlBindings.idPrefferedTechnologyControlVue,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
+
+        controls.prefferedTechnologyControlNone = new serendipia.controls.Control(
+            htmlBindings.idPrefferedTechnologyControlNone,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
+
+        controls.familiarTechnologiesWebpack = new serendipia.controls.Control(
+            htmlBindings.idFamiliarTechnologiesWebpack,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
+
+        controls.familiarTechnologiesBabel = new serendipia.controls.Control(
+            htmlBindings.idFamiliarTechnologiesBabel,
+            function(notifier, data){
+                if(this.getValue() != data){
+                    this.setValue(data, notifier);
+                }
+            }
+        );
     };
-    
+
     /**
      * @mehtod
      * @public
