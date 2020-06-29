@@ -75,70 +75,97 @@ window.main = function(global, $, moment, serendipia){
      * @method
      * @private
      * @memberof module:main
+     * @param {Serendipia.observable.Subject} notifier 
+     * @param {any} data 
+     */
+    functions.controlUpdateCallback = function(notifier, data){
+        if(this.getValue() != data){
+            this.setValue(data, notifier);
+        }
+    };
+
+    /**
+     * @method
+     * @private
+     * @memberof module:main 
+     * @param {Serendipia.controls.Control} control 
+     * @param {string | number} value 
+     */
+    functions.modelUpdateCallback = function(control, value){
+            
+        var data = {};
+        var modelProperties = model.get();
+        switch (control) {
+            case controls.nameControl:
+                data.name = value;
+                break;
+            case controls.prefferedTechnologyControlAngular:
+            case controls.prefferedTechnologyControlReact:
+            case controls.prefferedTechnologyControlVue:
+            case controls.prefferedTechnologyControlNone:
+                data.prefferedTechnology = value;
+                break;                
+            case controls.familiarTechnologiesWebpack:
+            case controls.familiarTechnologiesBabel:                   
+                var collection = modelProperties.familiarTechnologies;
+                if(!collection) {
+                    collection = new Array();
+                }
+                if(control.element.checked){
+                    collection.push(value);
+                } else {
+                    collection.pop(value);
+                }                    
+                data.familiarTechnologies = collection;
+                break;
+        }
+        
+        model.set(data, control);
+
+        serendipia.debug.log("Model Updated"); 
+        console.log(model.properties);
+    }
+
+    /**
+     * @method
+     * @private
+     * @memberof module:main
      */
     functions.controlSetup = function(){
 
         controls.nameControl = new serendipia.controls.Control(
             htmlBindings.idNameControl,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.prefferedTechnologyControlAngular = new serendipia.controls.Control(
             htmlBindings.idPrefferedTechnologyControlAngular,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.prefferedTechnologyControlReact = new serendipia.controls.Control(
             htmlBindings.idPrefferedTechnologyControlReact,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.prefferedTechnologyControlVue = new serendipia.controls.Control(
             htmlBindings.idPrefferedTechnologyControlVue,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.prefferedTechnologyControlNone = new serendipia.controls.Control(
             htmlBindings.idPrefferedTechnologyControlNone,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.familiarTechnologiesWebpack = new serendipia.controls.Control(
             htmlBindings.idFamiliarTechnologiesWebpack,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
 
         controls.familiarTechnologiesBabel = new serendipia.controls.Control(
             htmlBindings.idFamiliarTechnologiesBabel,
-            function(notifier, data){
-                if(this.getValue() != data){
-                    this.setValue(data, notifier);
-                }
-            }
+            functions.controlUpdateCallback
         );
     };
 
@@ -151,40 +178,9 @@ window.main = function(global, $, moment, serendipia){
         serendipia.debug.log("main.start() at {0}".format(moment().format()), "white", "red");
 
         functions.controlSetup();
-        model = new SurveyModel(function(control, value){
-            
-            var data = {};
-            var modelProperties = model.get();
-            switch (control) {
-                case controls.nameControl:
-                    data.name = value;
-                    break;
-                case controls.prefferedTechnologyControlAngular:
-                case controls.prefferedTechnologyControlReact:
-                case controls.prefferedTechnologyControlVue:
-                case controls.prefferedTechnologyControlNone:
-                    data.prefferedTechnology = value;
-                    break;                
-                case controls.familiarTechnologiesWebpack:
-                case controls.familiarTechnologiesBabel:                   
-                    var collection = modelProperties.familiarTechnologies;
-                    if(!collection) {
-                        collection = new Array();
-                    }
-                    if(control.element.checked){
-                        collection.push(value);
-                    } else {
-                        collection.pop(value);
-                    }                    
-                    data.familiarTechnologies = collection;
-                    break;
-            }
-            
-            model.set(data, control);
-            console.log(control, value, model);
-        });
+        model = new SurveyModel(functions.modelUpdateCallback);
 
-        controls.nameControl.addObserver(model);
+        controls.nameControl.addObserver(model);        
         controls.prefferedTechnologyControlAngular.addObserver(model);
         controls.prefferedTechnologyControlReact.addObserver(model);
         controls.prefferedTechnologyControlVue.addObserver(model);
@@ -192,6 +188,7 @@ window.main = function(global, $, moment, serendipia){
         controls.familiarTechnologiesWebpack.addObserver(model);
         controls.familiarTechnologiesBabel.addObserver(model);
 
+        serendipia.debug.log("Initial model status:");
         console.log(model);
     };
 
