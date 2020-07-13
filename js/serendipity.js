@@ -1,7 +1,74 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /**
+//  * serendipia.application
+//  *
+//  * @author Alex Alvarez Gárciga
+//  * @param {window} global
+//  * @param {serendipia} serendipia
+//  * @memberof namespace:serendipia
+//  */
+// window.serendipia.application = (function (global, serendipia) {
+//     "use strict";
+
+//     var model = undefined;
+//     var functions = {};
+
+//     /**
+//      *
+//      * @param {updateCallback} updateCallback 
+//      */
+//     functions.start = function(updateCallback) {
+//         model = new serendipia.observable.Model(updateCallback);
+//     };
+
+//     /**
+//      * @method get
+//      * @public
+//      * @memberof serendipia.application
+//      * @returns {Object}
+//      */
+//     functions.get = function() {
+//         return model.get();
+//     };
+
+//     /**
+//      * @method set
+//      * @public
+//      * @memberof serendipia.application
+//      * @param {object} data The object that contain a partial or a total part of the state to be hold by the model.
+//      * @param {serendipia.observable.Subject} notifier
+//      */
+//     functions.set = function(data, notifier) {
+//         model.set(data, notifier);
+//     };
+
+//     return {
+//         start: functions.start,
+//         get: functions.get,
+//         set: functions.set
+//     };
+// })(window, window.serendipia);
+
+
+
+
 /**
- * Serendipia Javascript Language Features Augmenting and Serendipia namespace
+ * serendipia Javascript Language Features Augmenting and serendipia namespace
  *
  * @author Alex Alvarez Gárciga
  * @param {window} global Context object
@@ -10,24 +77,24 @@
     "use strict";
   
     /**
-     * @namespace Serendipia
+     * @namespace serendipia
      */
-    var Serendipia = {};
-    global.Serendipia = global.Serendipia = Serendipia;
+    var serendipia = {};
+    global.serendipia = global.serendipia = serendipia;
   
     /**
      * Declares new namespaces
      *
      * @function namespace
-     * @memberof Serendipia
+     * @memberof serendipia
      * @param {string} nsString
      * @param {Object} root
      */
-    Serendipia.namespace = function (nsString, root) {
+    serendipia.namespace = function (nsString, root) {
       var i, len, parent, part, parts;
       parts = nsString.split(".");
-      parent = root != null ? root : Serendipia;
-      if (parts[0] === "Serendipia") {
+      parent = root != null ? root : serendipia;
+      if (parts[0] === "serendipia") {
         parts = parts.slice(1);
       }
       for (i = 0, len = parts.length; i < len; i++) {
@@ -174,26 +241,26 @@
   })(window);
   
   /**
-   * Serendipia.js Javascript utility functions
+   * serendipia.js Javascript utility functions
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global Context object
-   * @param {Serendipia} Serendipia Serendipia namespace
+   * @param {serendipia} serendipia serendipia namespace
    */
-  (function (global, Serendipia) {
+  (function (global, serendipia) {
     "use strict";
   
     /**
-     * @namespace Serendipia.js
-     * @memberof Serendipia
+     * @namespace serendipia.js
+     * @memberof serendipia
      */
-    var js = Serendipia.namespace("js", Serendipia);
+    var js = serendipia.namespace("js", serendipia);
   
     /**
      * For each property on object apply the given callback
      *
      * @function foreachPropertyDo
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {Object} object
      * @param {Function} callback
      * @returns {undefined}
@@ -223,7 +290,7 @@
      * The safe way for ask if a value is a number.
      *
      * @function isNumber
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {Object} value
      * @returns {Boolean}
      */
@@ -235,7 +302,7 @@
      * Check if two objects or arrays are equivalent
      *
      * @function areEquivalent
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {Object|Array} value The first object or array to compare
      * @param {Object|Array} other The second object or array to compare
      * @return {boolean} Returns true if they're equal
@@ -302,7 +369,7 @@
      * Returns the type of the object
      *
      * @function typeof
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} obj
      * @returns {function | symbol | object | number | string | array}
      */
@@ -329,7 +396,7 @@
      * Returns the class from who the object is instance of
      *
      * @function instanceof
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} left
      * @param {any} right
      * @returns {Object} The class
@@ -350,7 +417,7 @@
      *
      *
      * @function setPrototypeOf
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} o
      * @param {any} p
      */
@@ -368,7 +435,7 @@
      *
      *
      * @function getPrototypeOf
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} o
      */
     js.getPrototypeOf = function (o) {
@@ -384,7 +451,7 @@
      *
      *
      * @function inherits
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} subClass
      * @param {any} superClass
      * @throws {TypeError} Super expression must either be null or a function
@@ -407,7 +474,7 @@
      *
      *
      * @function createSuper
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} Derived
      */
     js.createSuper = function (Derived) {
@@ -429,7 +496,7 @@
      *
      *
      * @function possibleConstructorReturn
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} self
      * @param {any} call
      */
@@ -443,7 +510,7 @@
     /**
      *
      * @function assertThisInitialized
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} self
      * @throws {ReferenceError} This hasn't been initialized - super() hasn't been called.
      */
@@ -460,7 +527,7 @@
      *
      *
      * @function isNativeReflectConstruct
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      */
     js.isNativeReflectConstruct = function () {
       if (typeof Reflect === "undefined" || !Reflect.construct) return false;
@@ -478,7 +545,7 @@
      *
      *
      * @function classCallCheck
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {object} instance
      * @param {function} Constructor
      * @throws {TypeError} Cannot call a class as a function
@@ -494,7 +561,7 @@
      *
      *
      * @function defineProperties
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {Object} target
      * @param {Object} props
      */
@@ -510,7 +577,7 @@
   
     /**
      * @function createClass
-     * @memberof Serendipia.js
+     * @memberof serendipia.js
      * @param {any} Constructor
      * @param {any} protoProps
      * @param {any} staticProps
@@ -520,24 +587,24 @@
       if (staticProps) js.defineProperties(Constructor, staticProps);
       return Constructor;
     };
-  })(window, window.Serendipia);
+  })(window, window.serendipia);
   
   /**
-   * Serendipia.ui
+   * serendipia.ui
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    * @param {jQuery} $
    */
-  (function (global, Serendipia, $) {
+  (function (global, serendipia, $) {
     "use strict";
   
     /**
-     * @namespace Serendipia.ui
-     * @memberof Serendipia
+     * @namespace serendipia.ui
+     * @memberof serendipia
      */
-    var ui = Serendipia.namespace("ui", Serendipia);
+    var ui = serendipia.namespace("ui", serendipia);
   
     /**
      * Returns a function, that, as long as it continues to be invoked, will not be triggered.
@@ -551,7 +618,7 @@
      * API calls sent to the server.
      *
      * @function debounce
-     * @memberof Serendipia.ui
+     * @memberof serendipia.ui
      * @author David Walsh
      * @see https://davidwalsh.name/javascript-debounce-function
      * @param {function} func
@@ -608,7 +675,7 @@
      * allow a second targeted parameter for event delegation. Like the scroll, load and error events.
      *
      * @function delegateEvent
-     * @memberof Serendipia.ui
+     * @memberof serendipia.ui
      * @author Alex Alvarez Gárciga
      * @param {string} eventName
      * @param {string | HTMLElement | jQueryElement} delegator
@@ -635,7 +702,7 @@
      * Event delegation for Load event.
      *
      * @function delegateLoadEvent
-     * @memberof Serendipia.ui
+     * @memberof serendipia.ui
      * @author Alex Alvarez Gárciga
      * @param {string | HTMLElement | jQueryElement} delegator
      * @param {string | HTMLElement | jQueryElement} delegate
@@ -649,7 +716,7 @@
      * Event delegation for Scroll event.
      *
      * @function delegateScrollEvent
-     * @memberof Serendipia.ui
+     * @memberof serendipia.ui
      * @author Alex Alvarez Gárciga
      * @param {string | HTMLElement | jQueryElement} delegator
      * @param {string | HTMLElement | jQueryElement} delegate
@@ -663,7 +730,7 @@
      * Event delegation for Error event
      *
      * @function delegateErrorEvent
-     * @memberof Serendipia.ui
+     * @memberof serendipia.ui
      * @author Alex Alvarez Gárciga
      * @param {string | HTMLElement | jQueryElement} delegator
      * @param {string | HTMLElement | jQueryElement} delegate
@@ -672,23 +739,68 @@
     ui.delegateErrorEvent = function (delegator, delegate, callback) {
       ui.delegateEvent("error", delegator, delegate, callback);
     };
-  })(window, window.Serendipia, window.jQuery);
+  
+    /**
+     * Swap two any elements (Nodes) from the DOM.
+     * The Nodes does not need to be siblings or adjacent siblings.
+     * The swap is made without using temporal nodes or cloning.
+     *
+     * @memberof serendipia.ui
+     * @author Alex Alvarez Gárciga
+     * @param {Node} element1
+     * @param {Node} element2
+     */
+    ui.swapElements = function(element1, element2) {
+        var parent1 = element1.parentNode;
+        var parent2 = element2.parentNode;
+        var index, index1, index2;
+  
+        if (!parent1 || !parent2 
+            || parent1.isEqualNode(element2) 
+            || parent2.isEqualNode(element1)) {
+             return;
+        }
+  
+        for (index = 0; index < parent1.children.length; index++) {
+            if (parent1.children[index].isEqualNode(element1)) {
+                index1 = index;
+                break; //Alex: this break is for performance
+            }
+        }
+  
+        for (index = 0; index < parent2.children.length; index++) {
+            if (parent2.children[index].isEqualNode(element2)) {
+                index2 = index;
+                break; //Alex: this break is for performance
+            }
+        }
+  
+        if (parent1.isEqualNode(parent2) && index1 < index2) {
+            index2++;
+        }
+  
+        parent1.insertBefore(element2, parent1.children[index1]);
+        parent2.insertBefore(element1, parent2.children[index2]);
+  
+    };
+  
+  })(window, window.serendipia, window.jQuery);
   
   /**
-   * Serendipia.ui.loading
+   * serendipia.ui.loading
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    */
-  (function (global, Serendipia) {
+  (function (global, serendipia) {
     "use strict";
   
     /**
-     * @namespace Serendipia.ui.loading
-     * @memberof Serendipia.ui
+     * @namespace serendipia.ui.loading
+     * @memberof serendipia.ui
      */
-    var loading = Serendipia.namespace("ui.loading", Serendipia);
+    var loading = serendipia.namespace("ui.loading", serendipia);
   
     /**
      * Renders the spinner markup
@@ -761,7 +873,7 @@
      *
      * @function toggle
      * @param {string} selector
-     * @memberof Serendipia.ui.loading
+     * @memberof serendipia.ui.loading
      */
     loading.toggle = toggle;
   
@@ -770,7 +882,7 @@
      *
      * @function show
      * @param {string} selector
-     * @memberof Serendipia.ui.loading
+     * @memberof serendipia.ui.loading
      */
     loading.show = show;
   
@@ -779,41 +891,48 @@
      *
      * @function hide
      * @param {string} selector
-     * @memberof Serendipia.ui.loading
+     * @memberof serendipia.ui.loading
      */
     loading.hide = hide;
-  })(window, window.Serendipia);
+  })(window, window.serendipia);
   
   /**
-   * Serendipia.observable
+   * serendipia.observable
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    */
-  (function (global, Serendipia) {
+  (function (global, serendipia) {
     "use strict";
   
     /**
-     * @namespace Serendipia.observable
-     * @memberof Serendipia
+     * @namespace serendipia.observable
+     * @memberof serendipia
      */
-    var observable = Serendipia.namespace("observable", Serendipia);
+    var observable = serendipia.namespace("observable", serendipia);
+  
+    /**
+     * @callback updateCallback
+     * @param {serendipia.observable.Subject} notifier
+     * @param {any} data
+     */
   
     /**
      * It’s the object that will notify all of the observers that
      * it has changed in some way.
      *
      * @class Subject
-     * @memberof Serendipia.observable
+     * @memberof serendipia.observable
      * @author Alex Alvarez Gárciga
      */
     observable.Subject = (function () {
+      
       /**
        * @constructor
        */
       function Subject() {
-        Serendipia.js.classCallCheck(this, Subject);
+        serendipia.js.classCallCheck(this, Subject);
   
         this.observers = [];
       }
@@ -822,7 +941,7 @@
        * Adds an observer to observers collection
        *
        * @method addObserver
-       * @memberof Serendipia.observable.Subject
+       * @memberof serendipia.observable.Subject
        * @param {any} observer
        */
       Subject.prototype.addObserver = function (observer) {
@@ -840,7 +959,7 @@
        * Removes an observer from observers collection
        *
        * @method removeObserver
-       * @memberof Serendipia.observable.Subject
+       * @memberof serendipia.observable.Subject
        * @param {any} observer
        */
       Subject.prototype.removeObserver = function (observer) {
@@ -863,7 +982,7 @@
        * Loops over observers collection and calls the update method on each observer.
        *
        * @method notify
-       * @memberof Serendipia.observable.Subject
+       * @memberof serendipia.observable.Subject
        * @param {any} data
        * @param {Object<Subject>} notifier
        */
@@ -886,7 +1005,7 @@
   
       /**
        * @method toString
-       * @memberof Serendipia.observable.Subject
+       * @memberof serendipia.observable.Subject
        */
       Subject.prototype.toString = function () {
         return "[object {0}]".format(this.constructor.name);
@@ -899,8 +1018,8 @@
      * Observer
      *
      * @class Observer
-     * @memberof Serendipia.observable
-     * @param {function} updateCallback
+     * @memberof serendipia.observable
+     * @param {updateCallback} updateCallback
      */
     observable.Observer = (function () {
       function Observer(updateCallback) {
@@ -909,7 +1028,7 @@
         /**
          * @method update
          * @abstract
-         * @memberof Serendipia.observable.Observer
+         * @memberof serendipia.observable.Observer
          */
         Object.defineProperty(this, "update", {
           enumerable: false,
@@ -925,18 +1044,18 @@
      * SubjectObserver
      *
      * @class SubjectObserver
-     * @extends Serendipia.observable.Subject
-     * @memberof Serendipia.observable
+     * @extends serendipia.observable.Subject
+     * @memberof serendipia.observable
      * @param {function} updateCallback
      */
     observable.SubjectObserver = (function (_Subject) {
-      Serendipia.js.inherits(SubjectObserver, _Subject);
-      var _super = Serendipia.js.createSuper(SubjectObserver);
+      serendipia.js.inherits(SubjectObserver, _Subject);
+      var _super = serendipia.js.createSuper(SubjectObserver);
   
       function SubjectObserver(updateCallback) {
         var _this;
   
-        Serendipia.js.classCallCheck(this, SubjectObserver);
+        serendipia.js.classCallCheck(this, SubjectObserver);
   
         _this = _super.call(this);
         _this.update = updateCallback;
@@ -957,17 +1076,17 @@
      * Observable model for state view management
      *
      * @class ModelObservable
-     * @extends Serendipia.observable.Subject
-     * @memberof Serendipia.observable
+     * @extends serendipia.observable.Subject
+     * @memberof serendipia.observable
      */
     observable.ModelObservable = (function (_Subject) {
-      Serendipia.js.inherits(ModelObservable, _Subject);
-      var _super = Serendipia.js.createSuper(ModelObservable);
+      serendipia.js.inherits(ModelObservable, _Subject);
+      var _super = serendipia.js.createSuper(ModelObservable);
   
       function ModelObservable() {
         var _this;
   
-        Serendipia.js.classCallCheck(this, ModelObservable);
+        serendipia.js.classCallCheck(this, ModelObservable);
   
         _this = _super.call(this);
         _this.properties = {};
@@ -978,7 +1097,7 @@
        * Updates the state object that the model holds
        *
        * @method update
-       * @memberof Serendipia.observable.ModelObservable
+       * @memberof serendipia.observable.ModelObservable
        * @argument {any} data
        */
       ModelObservable.prototype.update = function () {
@@ -997,7 +1116,7 @@
        * Returns the state object that the model holds
        *
        * @method get
-       * @memberof Serendipia.observable.ModelObservable
+       * @memberof serendipia.observable.ModelObservable
        * @returns {Object}
        */
       ModelObservable.prototype.get = function () {
@@ -1014,13 +1133,13 @@
   
     /**
      * @class Model
-     * @memberof Serendipia.observable
-     * @extends Serendipia.observable.SubjectObserver
+     * @memberof serendipia.observable
+     * @extends serendipia.observable.SubjectObserver
      * @param {*} updateCallback
      */
     observable.Model = (function (_SubjectObserver) {
-      Serendipia.js.inherits(Model, _SubjectObserver);
-      var _super = Serendipia.js.createSuper(Model);
+      serendipia.js.inherits(Model, _SubjectObserver);
+      var _super = serendipia.js.createSuper(Model);
   
       /**
        * @constructor
@@ -1029,13 +1148,13 @@
       function Model(updateCallback) {
         var _this;
   
-        Serendipia.js.classCallCheck(this, Model);
+        serendipia.js.classCallCheck(this, Model);
   
         _this = _super.call(this, updateCallback);
   
         /**
          * @property {object} properties The object that holds the state.
-         * @memberof Serendipia.observable.Model
+         * @memberof serendipia.observable.Model
          */
         _this.properties = {};
         return _this;
@@ -1044,9 +1163,9 @@
       /**
        * @method set
        * @public
-       * @memberof Serendipia.observable.Model
+       * @memberof serendipia.observable.Model
        * @param {object} data The object that containt a partial or a total part of the state to be hold by the model.
-       * @param {Serendipia.observable.Subject} notifier
+       * @param {serendipia.observable.Subject} notifier
        */
       Model.prototype.set = function (data, notifier) {
         this.properties = Object.assign(this.properties, data);
@@ -1060,7 +1179,7 @@
   
       /**
        * @method get
-       * @memberof Serendipia.observable.Model
+       * @memberof serendipia.observable.Model
        * @returns {Object}
        */
       Model.prototype.get = function get() {
@@ -1074,23 +1193,23 @@
   
       return Model;
     })(observable.SubjectObserver);
-  })(window, window.Serendipia);
+  })(window, window.serendipia);
   
   /**
-   * Serendipia.profiler
+   * serendipia.profiler
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    */
-  (function (global, Serendipia) {
+  (function (global, serendipia) {
     "use strict";
   
     /**
-     * @namespace Serendipia.profiler
-     * @memberof Serendipia
+     * @namespace serendipia.profiler
+     * @memberof serendipia
      */
-    var profiler = Serendipia.namespace("profiler", Serendipia);
+    var profiler = serendipia.namespace("profiler", serendipia);
     var properties = {};
   
     properties.startTime = undefined;
@@ -1099,7 +1218,7 @@
      * Profiler starts counting
      *
      * @function start
-     * @memberof Serendipia.profiler
+     * @memberof serendipia.profiler
      */
     profiler.start = function () {
       properties.startTime = global.performance.now();
@@ -1109,7 +1228,7 @@
      * Profiler ends counting
      *
      * @function end
-     * @memberof Serendipia.profiler
+     * @memberof serendipia.profiler
      * @return {number}
      */
     profiler.end = function () {
@@ -1119,30 +1238,30 @@
      * Human readable representation of the time the profiler count
      *
      * @function toString
-     * @memberof Serendipia.profiler
+     * @memberof serendipia.profiler
      * @return {string}
      */
     profiler.toString = function () {
       return "{0}ms".format(Math.round(profiler.end()));
     };
-  })(window, window.Serendipia);
+  })(window, window.serendipia);
   
   /**
-   * Serendipia.debug
+   * serendipia.debug
    *
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    */
-  (function (global, Serendipia) {
+  (function (global, serendipia) {
     ("use strict");
   
     /**
      *
-     * @namespace Serendipia.debug
-     * @memberof Serendipia
+     * @namespace serendipia.debug
+     * @memberof serendipia
      */
-    var debug = Serendipia.namespace("debug", Serendipia);
+    var debug = serendipia.namespace("debug", serendipia);
     var properties = {};
     var constants = {};
   
@@ -1150,23 +1269,23 @@
   
     /**
      * @constant
-     * @memberof Serendipia.debug
+     * @memberof serendipia.debug
      */
     constants.DEFAULT_MESSAGE_FORMAT =
       "color:{0};font-size:{1}px;background-color:{2};padding:0 7px;font-weight:10";
     /**
      * @constant
-     * @memberof Serendipia.debug
+     * @memberof serendipia.debug
      */
     constants.DEFAULT_BACKGROUND_COLOR = "#c9ff00";
     /**
      * @constant
-     * @memberof Serendipia.debug
+     * @memberof serendipia.debug
      */
     constants.DEFAULT_FOREGROUND_COLOR = "#0e1318";
     /**
      * @constant
-     * @memberof Serendipia.debug
+     * @memberof serendipia.debug
      */
     constants.DEFAULT_FONT_SIZE = 14;
   
@@ -1177,7 +1296,7 @@
      * 
      * @function setDebug
      * @param {boolean} isDebug
-     * @memberof Serendipia.debug 
+     * @memberof serendipia.debug 
      */
     debug.setDebug = function (isDebug) {
       properties.debug = isDebug;
@@ -1186,7 +1305,7 @@
     /**
      * Prints on the developer's console the message given on the color given
      * 
-     * @memberof Serendipia.debug 
+     * @memberof serendipia.debug 
      * @param {string} message The message to be printed
      * @param {string} fgColor HEX foreground color code prefixed with #
      * @param {string} bgColor HEX background color code prefixed with #
@@ -1203,31 +1322,31 @@
         )
       );
     };
-  })(window, window.Serendipia);
+  })(window, window.serendipia);
   
   /**
-   * Serendipia.controls
+   * serendipia.controls
    * @author Alex Alvarez Gárciga
    * @param {window} global
-   * @param {Serendipia} Serendipia
+   * @param {serendipia} serendipia
    * @param {jQuery} $
    * @param {moment} moment
    */
-  (function (global, Serendipia, $, moment) {
+  (function (global, serendipia, $, moment) {
     "use strict";
   
     /**
-     * @namespace Serendipia.controls
-     * @memberof Serendipia
+     * @namespace serendipia.controls
+     * @memberof serendipia
      */
-    var controls = Serendipia.namespace("controls", Serendipia);
+    var controls = serendipia.namespace("controls", serendipia);
   
     /**
      * Control ready for Observable pattern
      * 
      * @class Control
-     * @memberof Serendipia.controls
-     * @extends Serendipia.observable.SubjectObserver
+     * @memberof serendipia.controls
+     * @extends serendipia.observable.SubjectObserver
      * @param {string} id HTMLElement id
      * @param {function()} updateCallback 
      * @param {boolean} overrideChangeEvent Configuration to override the default change event handler
@@ -1238,8 +1357,8 @@
      * @property {HTMLElement} element 
      */
     controls.Control = (function (_SubjectObserver) {
-      Serendipia.js.inherits(Control, _SubjectObserver);
-      var _super = Serendipia.js.createSuper(Control);
+      serendipia.js.inherits(Control, _SubjectObserver);
+      var _super = serendipia.js.createSuper(Control);
   
       /**
        * Generic Control ready for Observable pattern
@@ -1248,9 +1367,32 @@
        * @param {string} id
        * @param {function()} updateCallback
        * @param {boolean} overrideChangeEvent
+       *
+       * @example
+       *
+       * var control = new serendipia.controls.Control("controlId", function(notifier, value) {
+            if (this.getValue() !== value) {
+                this.setvalue(value, notifier);
+            }
+        };)
        */
       function Control(id, updateCallback, overrideChangeEvent) {
-        Serendipia.js.classCallCheck(this, Control);
+        serendipia.js.classCallCheck(this, Control);
+  
+        /**
+         * 
+         * @param {serendipia.observable.Subject} notifier
+         * @param {any} value
+         */
+        Control.prototype.updateControlCallback = function(notifier, value) {
+            if (this.getValue() !== value) {
+                this.setvalue(value, notifier);
+            }
+        };
+  
+        if (!updateCallback) {
+            updateCallback = Control.prototype.updateControlCallback;
+        }
   
         var _this = _super.call(this, updateCallback);
         
@@ -1261,7 +1403,7 @@
   
         /**
          * @callback onChangeCallback
-         * @memberof Serendipia.controls.Control
+         * @memberof serendipia.controls.Control
          */
         Control.prototype.onChangeCallback = function () {
           _this.setValue(this.value);
@@ -1278,9 +1420,9 @@
        * Sets the value of the control and notify all the observers
        * 
        * @method setValue
-       * @memberof Serendipia.controls.Control
+       * @memberof serendipia.controls.Control
        * @param {Object} data
-       * @param {Serendipia.observable.Subject} notifier
+       * @param {serendipia.observable.Subject} notifier
        */
       Control.prototype.setValue = function (data, notifier) {
         var self = this;
@@ -1324,7 +1466,7 @@
        * Gets the value of the control
        * 
        * @method getValue
-       * @memberof Serendipia.controls.Control
+       * @memberof serendipia.controls.Control
        * @returns {object | number | string}
        */
       Control.prototype.getValue = function () {
@@ -1340,7 +1482,7 @@
        * Adds the event listener callback for a given event name
        * 
        * @method on
-       * @memberof Serendipia.controls.Control
+       * @memberof serendipia.controls.Control
        * @param {string} eventName
        * @param {function()} eventCallback
        */
@@ -1357,7 +1499,7 @@
        * Removes the event listener callback for a given event name
        * 
        * @method off
-       * @memberof Serendipia.controls.Control
+       * @memberof serendipia.controls.Control
        * @param {string} eventName
        * @param {function()} eventCallback
        */
@@ -1375,7 +1517,7 @@
        * 
        * @method toString
        * @augments Object
-       * @memberof Serendipia.controls.Control
+       * @memberof serendipia.controls.Control
        */
       Control.prototype.toString = function () {
         return "[object {0}]#{1}".format(this.constructor.name, this.id);
@@ -1387,14 +1529,14 @@
       });
   
       return Control;
-    })(Serendipia.observable.SubjectObserver);
-  
+    })(serendipia.observable.SubjectObserver);
+      
     /**
      * Select2 control ready for Observable pattern
      * 
      * @class Select2Control
-     * @memberof Serendipia.controls
-     * @extends Serendipia.controls.Control
+     * @memberof serendipia.controls
+     * @extends serendipia.controls.Control
      * 
      * @param {string} id HTMLElement id
      * @param {function()} updateCallback
@@ -1409,8 +1551,8 @@
      *  
      */
     controls.Select2Control = (function (_Control) {
-      Serendipia.js.inherits(Select2Control, _Control);
-      var _super = Serendipia.js.createSuper(Select2Control);
+      serendipia.js.inherits(Select2Control, _Control);
+      var _super = serendipia.js.createSuper(Select2Control);
   
       /**
        * @constructor
@@ -1420,7 +1562,7 @@
        * @param {boolean} overrideChangeEvent Configuration to override the default change event handler
        */
       function Select2Control(id, updateCallback, options, overrideChangeEvent) {
-        Serendipia.js.classCallCheck(this, Select2Control);
+        serendipia.js.classCallCheck(this, Select2Control);
   
         var _this = _super.call(this, id, updateCallback, true);
   
@@ -1442,9 +1584,9 @@
        * Sets the value of the control and notify all the observers
        * 
        * @method setValue
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {object} data
-       * @param {Serendipia.observable.Subject} notifier
+       * @param {serendipia.observable.Subject} notifier
        */
       Select2Control.prototype.setValue = function (data, notifier) {
         var self = this;
@@ -1487,7 +1629,7 @@
        * Adds the event listener callback for a given event name
        * 
        * @method on
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {string} eventName
        * @param {function()} eventCallback
        */
@@ -1506,7 +1648,7 @@
        * Appends an option to the Select2 Control
        * 
        * @method append
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {HTMLOptionElement} option
        * @param {boolean} changing
        */
@@ -1526,7 +1668,7 @@
        *Resets the content of the Select2 control.
        * 
        * @method reset
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {boolean} keepSelected
        */
       Select2Control.prototype.reset = function (keepSelected) {
@@ -1546,7 +1688,7 @@
        * Triggers the "Change" event of the Select2Control
        * 
        * @method triggerChange
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {boolean} keepValue
        */
       Select2Control.prototype.triggerChange = function (keepSelected) {
@@ -1567,7 +1709,7 @@
        * Fetch options from data source
        * 
        * @method fetchDataSource
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @param {string} route
        * @param {Object} searchParam
        * @param {function} populateCallback
@@ -1618,7 +1760,7 @@
        * Returns if the Select2 Control have options of not.
        * 
        * @method hasOptions
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        * @returns {Boolean}
        */
       Select2Control.prototype.hasOptions = function () {
@@ -1634,7 +1776,7 @@
        * Remove all the options from the Select2 Control.
        * 
        * @method removeOptions
-       * @memberof Serendipia.controls.Select2Control
+       * @memberof serendipia.controls.Select2Control
        */
       Select2Control.prototype.removeOptions = function () {
         this.$select2Element.html("");
@@ -1652,8 +1794,8 @@
      * DateTimePicker control ready for Observable pattern
      * 
      * @class DateTimePicker
-     * @memberof Serendipia.controls
-     * @extends Serendipia.controls.Control
+     * @memberof serendipia.controls
+     * @extends serendipia.controls.Control
      * 
      * @param {string} id
      * @param {function} updateCallback
@@ -1667,8 +1809,8 @@
      * @property {jQueryElement} $dateTimePickerElement 
      */
     controls.DateTimePicker = (function (_Control) {
-      Serendipia.js.inherits(DateTimePicker, _Control);
-      var _super = Serendipia.js.createSuper(DateTimePicker);
+      serendipia.js.inherits(DateTimePicker, _Control);
+      var _super = serendipia.js.createSuper(DateTimePicker);
   
       /**
        * @constructor
@@ -1678,7 +1820,7 @@
        * @param {any} overrideChangeEvent
        */
       function DateTimePicker(id, updateCallback, options, overrideChangeEvent) {
-        Serendipia.js.classCallCheck(this, DateTimePicker);
+        serendipia.js.classCallCheck(this, DateTimePicker);
   
         var _this = _super.call(this, id, updateCallback, true);
   
@@ -1700,9 +1842,9 @@
        * Sets the value of the control and notify all the observers
        * 
        * @method setValue
-       * @memberof Serendipia.controls.DateTimePicker
+       * @memberof serendipia.controls.DateTimePicker
        * @param {object} data 
-       * @param {Serendipia.observable.Subject} notifier 
+       * @param {serendipia.observable.Subject} notifier 
        */
       DateTimePicker.prototype.setValue = function (data, notifier) {
         var self = this;
@@ -1727,7 +1869,7 @@
        * Adds the event listener callback for a given event name
        * 
        * @method on
-       * @memberof Serendipia.controls.DateTimePicker
+       * @memberof serendipia.controls.DateTimePicker
        * @param {string} eventName
        * @param {function()} eventCallback
        */
@@ -1746,7 +1888,7 @@
        * Returns a Human readable version of the Control
        * 
        * @method toString
-       * @memberof Serendipia.controls.DateTimePicker
+       * @memberof serendipia.controls.DateTimePicker
        * @return {string} The human readable version of the control
        */
       DateTimePicker.prototype.toString = function () {
@@ -1769,8 +1911,8 @@
      * Facebook like Time Selector based on minute intervals
      * 
      * @class TimeSelector
-     * @memberof Serendipia.controls
-     * @extends Serendipia.controls.Select2Control
+     * @memberof serendipia.controls
+     * @extends serendipia.controls.Select2Control
      * 
      * @param {string} id Select element id
      * @param {function()} updateCallback Callback for the Observer.update() method
@@ -1785,9 +1927,9 @@
      * 
      */
     controls.TimeSelector = (function (_Select2Control) {
-      Serendipia.js.inherits(TimeSelector, _Select2Control);
+      serendipia.js.inherits(TimeSelector, _Select2Control);
   
-      var _super = Serendipia.js.createSuper(TimeSelector);
+      var _super = serendipia.js.createSuper(TimeSelector);
   
       var constants = {};
       constants.DEFAULT_MINUTE_INTERVAL = 15;
@@ -1796,10 +1938,11 @@
       constants.CLASS_APPENDED = "appended";
       constants.EVENT_CHANGE = "change";
       constants.EVENT_CHANGE_SILENCED = "change.select2";
+      Object.freeze(constants);
   
       /**
        * @private
-       * @memberof Serendipia.controls.TimeSelector
+       * @memberof serendipia.controls.TimeSelector
        * @param {number} minuteInterval 
        */
       function buildDataSet(minuteInterval) {
@@ -1822,44 +1965,15 @@
   
       /**
        * @private
-       * @memberof Serendipia.controls.TimeSelector
+       * @memberof serendipia.controls.TimeSelector
        * @param {number} minuteInterval 
        */
-      function setDefaultConfiguration(minuteInterval) {
-        var conf = {};
-        conf.tags = true;
-        conf.minimumResultsForSearch = 0;
-        conf.sorter = function (results) {
-          return results.sort(function (a, b) {
-            return moment(a).isAfter(moment(b)) ? -1 : 1;
-          });
-        };
-        conf.data = buildDataSet(minuteInterval);
-        //conf.createTag= function (params) {
-        //    var term = $.trim(params.term);
-  
-        //    if (term === '') {
-        //        return null;
-        //    }
-        //    var time = term.split(":");
-        //    var hours = time[0];
-        //    var minutes = time[1];
-        //    var theMoment = moment();
-        //    theMoment.hours(hours);
-        //    theMoment.minutes(minutes);
-        //    return {
-        //        id: theMoment.format(),
-        //        text: theMoment.format("HH:mm"),
-        //        newTag: true // add additional parameters
-        //    }
-        //}
-        Object.assign(options, conf);
-      }
+      
   
       /**
        * @private
-       * @memberof Serendipia.controls.TimeSelector
-       * @param {Serendipia.controls.TimeSelector} control 
+       * @memberof serendipia.controls.TimeSelector
+       * @param {serendipia.controls.TimeSelector} control 
        * @param {*} defaultValue 
        */
       function setDefaultValue(control, defaultValue) {
@@ -1882,59 +1996,80 @@
        * 
        * @constructor
        * @param {string} id Select element id
-       * @param {function()} updateCallback Callback for the Observer.update() method
+       * @param {updateCallback} updateCallback Callback for the Observer.update() method
        * @param {Object} options
        */
       function TimeSelector(id, updateCallback, options) {
-        Serendipia.js.classCallCheck(this, TimeSelector);
   
-        var minuteInterval = options.minuteInterval || 15;
-        delete options.minuteInterval;
+          function setDefaultConfiguration(minuteInterval) {
+              var conf = {};
+              conf.tags = true;
+              conf.minimumResultsForSearch = 0;
+              conf.sorter = function (results) {
+                  return results.sort(function (a, b) {
+                      return moment(a).isAfter(moment(b)) ? -1 : 1;
+                  });
+              };
+              conf.data = buildDataSet(minuteInterval);
+              Object.assign(options, conf);
+          }
   
-        setDefaultConfiguration(minuteInterval);
-        var _this = _super.call(this, id, updateCallback, options, true);
-        _this.minuteInterval = minuteInterval;
+          serendipia.js.classCallCheck(this, TimeSelector);
   
-        setDefaultValue(_this, options.defaultValue);
+          var minuteInterval = options.minuteInterval || 15;
+          delete options.minuteInterval;
   
-        _this.$select2Element.on("change", function () {
+          setDefaultConfiguration(minuteInterval);
+          var _this = _super.call(this, id, updateCallback, options, true);
+          _this.minuteInterval = minuteInterval;
+  
+          setDefaultValue(_this, options.defaultValue);
+  
+          _this.$select2Element.on("change", function () {
           var value = _this.$select2Element.val();
           if (moment.isMoment(value)) {
-            if (value.isValid()) {
-              if (!moment(_this.value).isSame(value, "minute")) {
-                _this.value = value;
-              } else {
-                _this.value = moment();
-              }
-              _this.notify(_this.value, _this);
-            }
+          if (value.isValid()) {
+          if (!moment(_this.value).isSame(value, "minute")) {
+            _this.value = value;
           } else {
-            var time = value.split(":");
-            var theMoment = moment();
-            theMoment.hour(time[0]);
-            theMoment.minute(time[1]);
-            if (
-              _this.value.hour() !== theMoment.hour() ||
-              _this.value.minute() !== theMoment.minute()
-            ) {
-              _this.value = theMoment;
-            } else {
-              _this.value = moment();
-            }
-            _this.notify(_this.value, _this);
+            _this.value = moment();
           }
-        });
+          _this.notify(_this.value, _this);
+          }
+          } else {
+          var time = value.split(":");
+          var theMoment = moment();
+          theMoment.hour(time[0]);
+          theMoment.minute(time[1]);
+          if (
+          _this.value.hour() !== theMoment.hour() ||
+          _this.value.minute() !== theMoment.minute()
+          ) {
+          _this.value = theMoment;
+          } else {
+          _this.value = moment();
+          }
+          _this.notify(_this.value, _this);
+          }
+          });
   
-        return _this;
+          return _this;
       }
+  
+      /**
+       * 
+       * @callback updateCallback
+       * @param {serendipia.observable.Subject} notifier
+       * @param {any} data
+       */
   
       /**
        * Sets the value of the control and notify all the observers
        * 
        * @method setValue
-       * @memberof Serendipia.controls.TimeSelector
+       * @memberof serendipia.controls.TimeSelector
        * @param {object} data 
-       * @param {Serendipia.observable.Subject} notifier
+       * @param {serendipia.observable.Subject} notifier
        * @throws {Error} Not a valid moment object provided
        */
       TimeSelector.prototype.setValue = function (data, notifier) {
@@ -1979,8 +2114,8 @@
   
     /**
      * @class SelectorTimePicker
-     * @memberof Serendipia.controls
-     * @extends Serendipia.controls.DateTimePicker
+     * @memberof serendipia.controls
+     * @extends serendipia.controls.DateTimePicker
      * 
      * @param {string} id HTMLElement id
      * @param {function} updateCallback 
@@ -1988,8 +2123,8 @@
      * @todo TED Debt: Finish this for the union of a timepicker and a time selector for better UX/UI
      */
     controls.SelectorTimePicker = (function (_DateTimePicker) {
-      Serendipia.js.inherits(SelectorTimePicker, _DateTimePicker);
-      var _super = Serendipia.js.createSuper(SelectorTimePicker);
+      serendipia.js.inherits(SelectorTimePicker, _DateTimePicker);
+      var _super = serendipia.js.createSuper(SelectorTimePicker);
   
       /**
        * @constructor
@@ -1998,7 +2133,7 @@
        * @param {*} options 
        */
       function SelectorTimePicker(id, updateCallback, options) {
-        Serendipia.js.classCallCheck(this, SelectorTimePicker);
+        serendipia.js.classCallCheck(this, SelectorTimePicker);
   
         function removeDateTimePickerOptions(options) {
           // Alex: removing datetimepicker options.
@@ -2115,4 +2250,77 @@
   
       return SelectorTimePicker;
     })(controls.DateTimePicker);
-  })(window, window.Serendipia, window.jQuery, window.moment);
+  })(window, window.serendipia, window.jQuery, window.moment);
+  
+  
+  /**
+   * serendipia.application
+   *
+   * @author Alex Alvarez Gárciga
+   * @param {window} global
+   * @param {serendipia} serendipia
+   * @memberof namespace:serendipia
+   */
+  window.serendipia.application = (function (global, serendipia) {
+      "use strict";
+  
+      var model = undefined;
+      var functions = {};
+  
+      /**
+       *
+       * @param {updateCallback} updateCallback 
+       */
+      functions.start = function(updateCallback) {
+          model = new serendipia.observable.Model(updateCallback);
+      };
+  
+      /**
+       * @method get
+       * @public
+       * @memberof serendipia.application
+       * @returns {Object}
+       */
+      functions.get = function() {
+          return model.get();
+      };
+  
+      /**
+       * @method set
+       * @public
+       * @memberof serendipia.application
+       * @param {object} data The object that contain a partial or a total part of the state to be hold by the model.
+       * @param {serendipia.observable.Subject} notifier
+       */
+      functions.set = function(data, notifier) {
+          model.set(data, notifier);
+      };
+  
+      return {
+          start: functions.start,
+          get: functions.get,
+          set: functions.set
+      };
+  })(window, window.serendipia);
+  
+/**
+ * @module application
+ */
+  /**
+   * serendipia.modules
+   *
+   * @author Alex Alvarez Gárciga
+   * @param {window} global
+   * @param {serendipia} serendipia
+   */
+  (function (global, serendipia) {
+    ("use strict");
+
+    /**
+     *
+     * @namespace serendipia.modules
+     * @memberof serendipia
+     */
+    var modules = serendipia.namespace("modules", serendipia);
+
+})(window, window.serendipia);

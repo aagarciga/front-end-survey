@@ -8,13 +8,13 @@ import moment from "moment/dist/moment";
 /**
  * @module main
  */
-window.main = function(global, $, moment, serendipia){
+window.main = function(global, $, moment, serendipia, application){
 
     /**
      * SurveyModel
      * @class
      * @memberof module:main
-     * @extends Serendipia.observable.Model
+     * @extends serendipia.observable.Model
      * 
      * @param {function} updateCallback
      * 
@@ -75,7 +75,7 @@ window.main = function(global, $, moment, serendipia){
      * @method
      * @private
      * @memberof module:main
-     * @param {Serendipia.observable.Subject} notifier 
+     * @param {serendipia.observable.Subject} notifier 
      * @param {any} data 
      */
     functions.controlUpdateCallback = function(notifier, data){
@@ -88,7 +88,7 @@ window.main = function(global, $, moment, serendipia){
      * @method
      * @private
      * @memberof module:main 
-     * @param {Serendipia.controls.Control} control 
+     * @param {serendipia.controls.Control} control 
      * @param {string | number} value 
      */
     functions.modelUpdateCallback = function(control, value){
@@ -188,6 +188,8 @@ window.main = function(global, $, moment, serendipia){
         controls.familiarTechnologiesWebpack.addObserver(model);
         controls.familiarTechnologiesBabel.addObserver(model);
 
+        model.addObserver(application.getModel());
+
         serendipia.debug.log("Initial model status:");
         console.log(model);
     };
@@ -195,9 +197,17 @@ window.main = function(global, $, moment, serendipia){
     return {
         start: functions.start
     };
-}(window, window.jQuery, moment, window.Serendipia);
+}(window, window.jQuery, moment, window.serendipia, window.serendipia.modules.application);
 
 $(window.document).ready(function () {
-    Serendipia.debug.log("Document Ready");
+    serendipia.debug.log("Document Ready");
+
+    // Alex: allways make your app.stat() call before calling main.start(). Place of the application.start() must be global.
+    var app = window.serendipia.modules.application;
+    app.start(function(notifier, data){
+        console.log("notifier:", notifier, "data:", data);
+    });
+    
     main.start();
+    
 });
